@@ -15,6 +15,6 @@ interface BeerService {
     suspend fun getNews(
         @Query("page") page: Int = 1,
         @Query("per_page") perPage: Int = 60
-    ): Response<List<BeerItem>>
+    ): List<BeerItem>
 
 }

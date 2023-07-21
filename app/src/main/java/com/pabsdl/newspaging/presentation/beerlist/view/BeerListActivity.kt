@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pabsdl.newspaging.data.database.DatabaseInstance
 import com.pabsdl.newspaging.data.network.RetrofitInstance
 import com.pabsdl.newspaging.databinding.ActivityBeerListBinding
 import com.pabsdl.newspaging.presentation.beerlist.repository.BeerListRepository
@@ -29,9 +30,11 @@ class BeerListActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         val activity = this
+        val beerDatabase = DatabaseInstance
+            .getDatabaseInstance(this)
         val beerService = RetrofitInstance
             .getRetrofitInstance()
-        val repository = BeerListRepository(beerService)
+        val repository = BeerListRepository(beerDatabase, beerService)
         val viewModelFactory = BeerListViewModelFactory(repository)
         viewModel = ViewModelProvider(activity, viewModelFactory)[BeerListViewModel::class.java].apply {
             lifecycleScope.launch {

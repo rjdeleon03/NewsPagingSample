@@ -1,6 +1,7 @@
 package com.pabsdl.newspaging.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.pabsdl.newspaging.data.database.BeerEntity
 
 data class BeerItem(
     val id: Int,
@@ -11,4 +12,15 @@ data class BeerItem(
     val firstBrewed: String,
     @SerializedName("image_url")
     val imageUrl: String?
-)
+) {
+    fun toBeerEntity(): BeerEntity {
+        return BeerEntity(
+            id,
+            name,
+            tagline,
+            description,
+            firstBrewed,
+            imageUrl
+        )
+    }
+}

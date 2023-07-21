@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -15,7 +16,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "API_KEY", API_KEY
         buildConfigField "String", "BASE_URL", BASE_URL
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -65,4 +65,9 @@ dependencies {
 
     // Paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    //Room Database
+    implementation "androidx.room:room-ktx:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-paging:2.5.2"
 }

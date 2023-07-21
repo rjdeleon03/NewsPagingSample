@@ -14,9 +14,8 @@ class BeerRemoteDataSource(private val beerService: BeerService): PagingSource<I
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, BeerItem> {
         try {
             val pageKeyToLoad = params.key ?: 1 // Key is page number
-            val response = beerService.getNews(page = pageKeyToLoad)
+            val loadedData = beerService.getNews(page = pageKeyToLoad)
             val responseData = mutableListOf<BeerItem>()
-            val loadedData = response.body() ?: arrayListOf()
             responseData.addAll(loadedData)
 
             val prevKey = if (pageKeyToLoad == 1) null else pageKeyToLoad - 1
