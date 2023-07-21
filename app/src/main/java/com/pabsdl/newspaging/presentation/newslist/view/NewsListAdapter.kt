@@ -1,6 +1,5 @@
 package com.pabsdl.newspaging.presentation.newslist.view
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -30,7 +29,7 @@ class NewsListAdapter: PagingDataAdapter<NewsItem, NewsListAdapter.ViewHolder>(D
 
         fun bind(item: NewsItem) {
             binding.apply {
-                titleTextview.text = item.title
+                titleTextview.text = item.name
             }
         }
     }
@@ -38,7 +37,7 @@ class NewsListAdapter: PagingDataAdapter<NewsItem, NewsListAdapter.ViewHolder>(D
     object DataDifferentiator : DiffUtil.ItemCallback<NewsItem>() {
 
         override fun areItemsTheSame(oldItem: NewsItem, newItem: NewsItem): Boolean {
-            return oldItem.url == newItem.url
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: NewsItem, newItem: NewsItem): Boolean {

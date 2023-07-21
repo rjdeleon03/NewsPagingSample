@@ -1,22 +1,14 @@
 package com.pabsdl.newspaging.data.model
 
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
 data class NewsItem(
-    val source: Source,
-    val author: String,
-    val title: String,
+    val id: Int,
+    val name: String,
+    val tagline: String,
     val description: String,
-    val url: String,
-    val urlToImage: String,
-    val publishedAt: String,
-    val content: String
-) {
-}
-
-@JsonClass(generateAdapter = true)
-data class Source(
-    val id: String,
-    val name: String
+    @SerializedName("first_brewed")
+    val firstBrewed: String,
+    @SerializedName("image_url")
+    val imageUrl: String?
 )

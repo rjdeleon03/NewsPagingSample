@@ -2,18 +2,14 @@ package com.pabsdl.newspaging.presentation.newslist.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pabsdl.newspaging.data.model.NewsItemResponse
-import com.pabsdl.newspaging.data.network.NetworkResult
 import com.pabsdl.newspaging.data.network.RetrofitInstance
 import com.pabsdl.newspaging.databinding.ActivityNewsListBinding
 import com.pabsdl.newspaging.presentation.newslist.repository.NewsListRepository
 import com.pabsdl.newspaging.presentation.newslist.viewmodel.NewsListViewModel
 import com.pabsdl.newspaging.presentation.newslist.viewmodel.NewsListViewModelFactory
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class NewsListActivity : AppCompatActivity() {

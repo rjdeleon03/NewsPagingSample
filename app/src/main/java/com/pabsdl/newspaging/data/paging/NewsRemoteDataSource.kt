@@ -4,10 +4,10 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pabsdl.newspaging.data.model.NewsItem
 import com.pabsdl.newspaging.data.network.NewsService
+import com.pabsdl.newspaging.data.network.NewsService.Companion.NETWORK_PAGE_SIZE
 import retrofit2.HttpException
 import java.io.IOException
 
-const val NETWORK_PAGE_SIZE = 37
 
 class NewsRemoteDataSource(private val newsService: NewsService): PagingSource<Int, NewsItem>() {
 
@@ -16,7 +16,7 @@ class NewsRemoteDataSource(private val newsService: NewsService): PagingSource<I
             val pageKeyToLoad = params.key ?: 1 // Key is page number
             val response = newsService.getNews(page = pageKeyToLoad)
             val responseData = mutableListOf<NewsItem>()
-            val loadedData = response.body()?.articles ?: arrayListOf()
+            val loadedData = response.body() ?: arrayListOf()
             responseData.addAll(loadedData)
 
             val prevKey = if (pageKeyToLoad == 1) null else pageKeyToLoad - 1
