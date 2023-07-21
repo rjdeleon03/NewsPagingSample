@@ -1,4 +1,4 @@
-package com.pabsdl.newspaging.data
+package com.pabsdl.newspaging.data.model
 
 data class NewsItemResponse(
     val status: String = "",

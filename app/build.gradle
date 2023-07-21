@@ -41,6 +41,8 @@ android {
 
 dependencies {
 
+    def paging_version = "3.1.1"
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
@@ -58,5 +60,9 @@ dependencies {
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
+    // Lifecycle VM KTX
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }

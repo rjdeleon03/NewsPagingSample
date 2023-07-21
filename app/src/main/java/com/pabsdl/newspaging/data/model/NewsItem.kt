@@ -1,4 +1,4 @@
-package com.pabsdl.newspaging.data
+package com.pabsdl.newspaging.data.model
 
 import com.squareup.moshi.JsonClass
 
