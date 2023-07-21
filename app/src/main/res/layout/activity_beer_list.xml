@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.newslist.view.NewsListActivity">
+    tools:context=".presentation.beerlist.view.BeerListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_list_recyclerview"
+        android:id="@+id/beer_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/news_item"/>

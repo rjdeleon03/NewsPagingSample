@@ -2,20 +2,20 @@ package com.pabsdl.newspaging.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.pabsdl.newspaging.data.model.NewsItem
-import com.pabsdl.newspaging.data.network.NewsService
-import com.pabsdl.newspaging.data.network.NewsService.Companion.NETWORK_PAGE_SIZE
+import com.pabsdl.newspaging.data.model.BeerItem
+import com.pabsdl.newspaging.data.network.BeerService
+import com.pabsdl.newspaging.data.network.BeerService.Companion.NETWORK_PAGE_SIZE
 import retrofit2.HttpException
 import java.io.IOException
 
 
-class NewsRemoteDataSource(private val newsService: NewsService): PagingSource<Int, NewsItem>() {
+class BeerRemoteDataSource(private val beerService: BeerService): PagingSource<Int, BeerItem>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, BeerItem> {
         try {
             val pageKeyToLoad = params.key ?: 1 // Key is page number
-            val response = newsService.getNews(page = pageKeyToLoad)
-            val responseData = mutableListOf<NewsItem>()
+            val response = beerService.getNews(page = pageKeyToLoad)
+            val responseData = mutableListOf<BeerItem>()
             val loadedData = response.body() ?: arrayListOf()
             responseData.addAll(loadedData)
 
@@ -42,7 +42,7 @@ class NewsRemoteDataSource(private val newsService: NewsService): PagingSource<I
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, NewsItem>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, BeerItem>): Int? {
         // Get the page to load when data needs to be refreshed
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey

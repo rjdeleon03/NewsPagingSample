@@ -1,11 +1,11 @@
 package com.pabsdl.newspaging.data.network
 
-import com.pabsdl.newspaging.data.model.NewsItem
+import com.pabsdl.newspaging.data.model.BeerItem
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NewsService {
+interface BeerService {
 
     companion object {
         const val NETWORK_PAGE_SIZE = 60
@@ -15,6 +15,6 @@ interface NewsService {
     suspend fun getNews(
         @Query("page") page: Int = 1,
         @Query("per_page") perPage: Int = 60
-    ): Response<List<NewsItem>>
+    ): Response<List<BeerItem>>
 
 }

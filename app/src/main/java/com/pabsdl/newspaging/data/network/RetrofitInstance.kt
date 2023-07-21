@@ -1,21 +1,19 @@
 package com.pabsdl.newspaging.data.network
 
 import com.pabsdl.newspaging.BuildConfig
-import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 object RetrofitInstance {
 
-    var newsService: NewsService? = null
+    var beerService: BeerService? = null
 
-    fun getRetrofitInstance(): NewsService {
-        if (newsService == null) {
+    fun getRetrofitInstance(): BeerService {
+        if (beerService == null) {
 
             val interceptor = HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
@@ -25,14 +23,14 @@ object RetrofitInstance {
                 connectTimeout(20, TimeUnit.SECONDS)
             }.build()
 
-            newsService = Retrofit.Builder()
+            beerService = Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create()
         }
-        return newsService!!
+        return beerService!!
     }
 
 }

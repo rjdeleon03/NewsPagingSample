@@ -1,14 +1,14 @@
-package com.pabsdl.newspaging.presentation.newslist.view
+package com.pabsdl.newspaging.presentation.beerlist.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.pabsdl.newspaging.data.model.NewsItem
+import com.pabsdl.newspaging.data.model.BeerItem
 import com.pabsdl.newspaging.databinding.NewsItemBinding
 
-class NewsListAdapter: PagingDataAdapter<NewsItem, NewsListAdapter.ViewHolder>(DataDifferentiator) {
+class BeerListAdapter: PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(DataDifferentiator) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,20 +27,20 @@ class NewsListAdapter: PagingDataAdapter<NewsItem, NewsListAdapter.ViewHolder>(D
 
         }
 
-        fun bind(item: NewsItem) {
+        fun bind(item: BeerItem) {
             binding.apply {
                 titleTextview.text = item.name
             }
         }
     }
 
-    object DataDifferentiator : DiffUtil.ItemCallback<NewsItem>() {
+    object DataDifferentiator : DiffUtil.ItemCallback<BeerItem>() {
 
-        override fun areItemsTheSame(oldItem: NewsItem, newItem: NewsItem): Boolean {
+        override fun areItemsTheSame(oldItem: BeerItem, newItem: BeerItem): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: NewsItem, newItem: NewsItem): Boolean {
+        override fun areContentsTheSame(oldItem: BeerItem, newItem: BeerItem): Boolean {
             return oldItem == newItem
         }
     }
