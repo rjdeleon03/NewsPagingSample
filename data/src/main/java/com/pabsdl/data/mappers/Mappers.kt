@@ -17,17 +17,6 @@ object Mappers {
         )
     }
 
-    fun BeerDTO.toDomain(): BeerItem {
-        return BeerItem(
-            id,
-            name,
-            tagline,
-            description,
-            firstBrewed,
-            imageUrl
-        )
-    }
-
     fun BeerDTO.toLocal(): BeerEntity {
         return BeerEntity(
             id,
