@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface GetBeersRepository {
 
     fun getBeers(): Flow<PagingData<BeerItem>>
+
+    fun getBeerDetail(beerId: Int): Flow<BeerItem?>
 }
