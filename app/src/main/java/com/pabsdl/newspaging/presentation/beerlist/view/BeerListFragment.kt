@@ -1,27 +1,36 @@
 package com.pabsdl.newspaging.presentation.beerlist.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pabsdl.newspaging.databinding.ActivityBeerListBinding
+import com.pabsdl.newspaging.databinding.FragmentBeerListBinding
 import com.pabsdl.newspaging.presentation.beerlist.viewmodel.BeerListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BeerListActivity : AppCompatActivity() {
+class BeerListFragment : Fragment() {
 
     private val viewModel: BeerListViewModel by viewModels()
 
-    private lateinit var binding: ActivityBeerListBinding
+    private lateinit var binding: FragmentBeerListBinding
     private val adapter: BeerListAdapter by lazy { BeerListAdapter() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityBeerListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentBeerListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initViewModel()
     }
@@ -39,8 +48,8 @@ class BeerListActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         binding.apply {
             beerListRecyclerView.apply {
-                adapter = this@BeerListActivity.adapter
-                layoutManager = LinearLayoutManager(this@BeerListActivity)
+                adapter = this@BeerListFragment.adapter
+                layoutManager = LinearLayoutManager(requireContext())
             }
         }
     }

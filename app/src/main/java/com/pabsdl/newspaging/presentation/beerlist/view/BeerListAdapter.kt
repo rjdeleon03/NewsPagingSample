@@ -27,20 +27,20 @@ class BeerListAdapter: PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(D
 
         }
 
-        fun bind(item: com.pabsdl.domain.model.BeerItem) {
+        fun bind(item: BeerItem) {
             binding.apply {
                 titleTextview.text = item.name
             }
         }
     }
 
-    object DataDifferentiator : DiffUtil.ItemCallback<com.pabsdl.domain.model.BeerItem>() {
+    object DataDifferentiator : DiffUtil.ItemCallback<BeerItem>() {
 
-        override fun areItemsTheSame(oldItem: com.pabsdl.domain.model.BeerItem, newItem: com.pabsdl.domain.model.BeerItem): Boolean {
+        override fun areItemsTheSame(oldItem: BeerItem, newItem: BeerItem): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: com.pabsdl.domain.model.BeerItem, newItem: com.pabsdl.domain.model.BeerItem): Boolean {
+        override fun areContentsTheSame(oldItem: BeerItem, newItem: BeerItem): Boolean {
             return oldItem == newItem
         }
     }
