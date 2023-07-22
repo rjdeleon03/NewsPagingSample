@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.pabsdl.newspaging.data.model.BeerItem
+import com.pabsdl.domain.model.BeerItem
 import com.pabsdl.newspaging.databinding.NewsItemBinding
 
 class BeerListAdapter: PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(DataDifferentiator) {
@@ -27,20 +27,20 @@ class BeerListAdapter: PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(D
 
         }
 
-        fun bind(item: BeerItem) {
+        fun bind(item: com.pabsdl.domain.model.BeerItem) {
             binding.apply {
                 titleTextview.text = item.name
             }
         }
     }
 
-    object DataDifferentiator : DiffUtil.ItemCallback<BeerItem>() {
+    object DataDifferentiator : DiffUtil.ItemCallback<com.pabsdl.domain.model.BeerItem>() {
 
-        override fun areItemsTheSame(oldItem: BeerItem, newItem: BeerItem): Boolean {
+        override fun areItemsTheSame(oldItem: com.pabsdl.domain.model.BeerItem, newItem: com.pabsdl.domain.model.BeerItem): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: BeerItem, newItem: BeerItem): Boolean {
+        override fun areContentsTheSame(oldItem: com.pabsdl.domain.model.BeerItem, newItem: com.pabsdl.domain.model.BeerItem): Boolean {
             return oldItem == newItem
         }
     }

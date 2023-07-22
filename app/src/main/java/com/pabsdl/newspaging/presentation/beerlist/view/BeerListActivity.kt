@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pabsdl.newspaging.data.database.DatabaseInstance
-import com.pabsdl.newspaging.data.network.RetrofitInstance
+import com.pabsdl.data.local.DatabaseInstance
+import com.pabsdl.data.remote.RetrofitInstance
+import com.pabsdl.data.repository.GetBeersRepositoryImpl
+import com.pabsdl.domain.repository.GetBeersRepository
+import com.pabsdl.domain.usecases.GetBeersUseCase
 import com.pabsdl.newspaging.databinding.ActivityBeerListBinding
-import com.pabsdl.newspaging.presentation.beerlist.repository.BeerListRepository
 import com.pabsdl.newspaging.presentation.beerlist.viewmodel.BeerListViewModel
 import com.pabsdl.newspaging.presentation.beerlist.viewmodel.BeerListViewModelFactory
 import kotlinx.coroutines.launch
@@ -34,8 +36,9 @@ class BeerListActivity : AppCompatActivity() {
             .getDatabaseInstance(this)
         val beerService = RetrofitInstance
             .getRetrofitInstance()
-        val repository = BeerListRepository(beerDatabase, beerService)
-        val viewModelFactory = BeerListViewModelFactory(repository)
+        val getBeersRepository = GetBeersRepositoryImpl(beerDatabase, beerService)
+        val getBeersUseCase = GetBeersUseCase(getBeersRepository)
+        val viewModelFactory = BeerListViewModelFactory(getBeersUseCase)
         viewModel = ViewModelProvider(activity, viewModelFactory)[BeerListViewModel::class.java].apply {
             lifecycleScope.launch {
                 beerListData.collect {
