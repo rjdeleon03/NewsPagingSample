@@ -19,7 +19,7 @@ class BeerListFragment : Fragment() {
     private val viewModel: BeerListViewModel by viewModels()
 
     private lateinit var binding: FragmentBeerListBinding
-    private val adapter: BeerListAdapter by lazy { BeerListAdapter() }
+    private val adapter: BeerListAdapter by lazy { BeerListAdapter(this::onBeerItemClicked) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,5 +52,9 @@ class BeerListFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
+    }
+
+    private fun onBeerItemClicked(beerId: Int) {
+        viewModel.showBeerDetail(beerId)
     }
 }

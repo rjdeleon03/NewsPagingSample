@@ -1,5 +1,6 @@
 package com.pabsdl.newspaging.di
 
+import com.pabsdl.newspaging.presentation.navigation.BeerFlowCoordinator
 import com.pabsdl.newspaging.presentation.navigation.Navigator
 import dagger.Module
 import dagger.Provides
@@ -15,5 +16,10 @@ object NavigationModule {
     @Singleton
     fun provideNavigator(): Navigator {
         return Navigator()
+    }
+
+    @Provides
+    fun provideBeerFlowCoordinator(navigator: Navigator): BeerFlowCoordinator {
+        return BeerFlowCoordinator(navigator)
     }
 }

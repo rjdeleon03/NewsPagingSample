@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pabsdl.domain.model.BeerItem
 import com.pabsdl.newspaging.databinding.NewsItemBinding
 
-class BeerListAdapter: PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(DataDifferentiator) {
+class BeerListAdapter(
+    private val onClickListener: (Int) -> Unit
+): PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(DataDifferentiator) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = NewsItemBinding.inflate(inflater)
-        return ViewHolder(binding)
+        return ViewHolder(binding, onClickListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -22,14 +24,24 @@ class BeerListAdapter: PagingDataAdapter<BeerItem, BeerListAdapter.ViewHolder>(D
         }
     }
 
-    class ViewHolder(private val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root) {
-        init {
+    class ViewHolder(private val binding: NewsItemBinding,
+                     private val onClickListener: (Int) -> Unit):
+        RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.apply {
+                setOnClickListener {
+                    (tag as? BeerItem)?.let { beerItem ->
+                        onClickListener.invoke(beerItem.id)
+                    }
+                }
+            }
         }
 
         fun bind(item: BeerItem) {
             binding.apply {
                 titleTextview.text = item.name
+                root.tag = item
             }
         }
     }
