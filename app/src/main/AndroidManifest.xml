@@ -17,7 +17,9 @@
         android:theme="@style/Theme.NewsPaging"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.MainComposeActivity"
+            android:label="@string/title_activity_main_compose"
+            android:theme="@style/Theme.NewsPaging"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +28,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.beerlist.view.BeerListActivity"
-            android:exported="false"/>
+            android:name=".presentation.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
