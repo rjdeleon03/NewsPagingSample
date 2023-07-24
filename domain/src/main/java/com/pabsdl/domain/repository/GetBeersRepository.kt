@@ -8,5 +8,5 @@ interface GetBeersRepository {
 
     fun getBeers(): Flow<PagingData<BeerItem>>
 
-    fun getBeerDetail(beerId: Int): Flow<BeerItem?>
+    fun getBeerDetail(beerId: Int): Flow<BeerItem.Item?>
 }

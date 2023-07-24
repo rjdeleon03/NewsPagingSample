@@ -1,11 +1,15 @@
 package com.pabsdl.domain.model
 
-data class BeerItem(
-    val id: Int,
-    val name: String,
-    val tagline: String,
-    val description: String,
-    val firstBrewed: String,
-    val imageUrl: String?
-) {
+sealed class BeerItem {
+
+    data class Item(
+        val id: Int,
+        val name: String,
+        val tagline: String,
+        val description: String,
+        val firstBrewed: String,
+        val imageUrl: String?
+    )
+
+    class Separator()
 }

@@ -6,8 +6,8 @@ import com.pabsdl.domain.model.BeerItem
 
 object Mappers {
 
-    fun BeerEntity.toDomain(): BeerItem {
-        return BeerItem(
+    fun BeerEntity.toDomain(): BeerItem.Item {
+        return BeerItem.Item(
             id,
             name,
             tagline,

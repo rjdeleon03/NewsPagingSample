@@ -23,10 +23,20 @@ class GetBeersRepositoryImpl(private val beerDatabase: BeerDatabase, private val
             pagingSourceFactory = { beerDatabase.dao.pagingSource() }
         )
         .flow
-        .map { pagingData -> pagingData.map { it.toDomain() } }
+        .map { pagingData ->
+            pagingData.map { it.toDomain() }
+                .insertSeparators { before: BeerItem, after: BeerItem ->
+                    when {
+                        before == null -> null
+                        after == null -> null
+                        else -> BeerItem.Separator("Separator: $before-$after")
+                    }
+                }
+        }
     }
 
-    override fun getBeerDetail(beerId: Int): Flow<BeerItem?> {
+    override fun getBeerDetail(beerId: Int): Flow<BeerItem.Item?> {
         return beerDatabase.dao.getBeer(beerId)
+            .map { it?.toDomain() }
     }
 }
