@@ -22,5 +22,5 @@ interface BeerDao {
 
     // For getting an individual beer item
     @Query("SELECT * FROM beers WHERE id=:beerId")
-    fun getBeer(beerId: Int): Flow<BeerItem?>
+    fun getBeer(beerId: Int): Flow<BeerEntity?>
 }

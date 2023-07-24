@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navigator.activity = this
-        viewModel.start()
+        viewModel
     }
 
     override fun onDestroy() {

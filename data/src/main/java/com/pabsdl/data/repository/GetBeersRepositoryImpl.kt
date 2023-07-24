@@ -28,5 +28,6 @@ class GetBeersRepositoryImpl(private val beerDatabase: BeerDatabase, private val
 
     override fun getBeerDetail(beerId: Int): Flow<BeerItem?> {
         return beerDatabase.dao.getBeer(beerId)
+            .map { it?.toDomain() }
     }
 }
