@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.beerdetail.view.BeerDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/beer_name_textview"
+    <data>
+        <variable
+            name="beer"
+            type="com.pabsdl.domain.model.BeerItem"/>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Detail Fragment"
-        android:gravity="center"
-        android:textSize="20sp"/>
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        tools:context=".presentation.beerdetail.view.BeerDetailFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/beer_name_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{beer.name}"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/beer_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="300dp"
+            android:adjustViewBounds="true"
+            android:customImage="@{beer.imageUrl}"/>
+
+        <TextView
+            android:id="@+id/beer_description_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{beer.description}" />
+
+    </LinearLayout>
+
+</layout>
