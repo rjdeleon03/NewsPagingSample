@@ -1,4 +1,4 @@
-package com.pabsdl.newspaging.presentation.beerlist.view
+package com.pabsdl.newspaging.presentation.old.beerlist.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pabsdl.newspaging.databinding.FragmentBeerListBinding
-import com.pabsdl.newspaging.presentation.beerlist.viewmodel.BeerListViewModel
+import com.pabsdl.newspaging.presentation.old.beerlist.viewmodel.BeerListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

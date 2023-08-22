@@ -1,11 +1,11 @@
-package com.pabsdl.newspaging.presentation
+package com.pabsdl.newspaging.presentation.old
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import com.pabsdl.newspaging.databinding.ActivityMainBinding
-import com.pabsdl.newspaging.presentation.navigation.Navigator
+import com.pabsdl.newspaging.presentation.old.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:orientation="vertical"
-        tools:context=".presentation.beerdetail.view.BeerDetailFragment">
+        tools:context=".presentation.old.beerdetail.view.BeerDetailFragment">
 
         <TextView
             android:id="@+id/beer_name_textview"

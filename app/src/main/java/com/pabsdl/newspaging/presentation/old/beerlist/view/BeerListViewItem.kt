@@ -1,4 +1,4 @@
-package com.pabsdl.newspaging.presentation.beerlist.view
+package com.pabsdl.newspaging.presentation.old.beerlist.view
 
 import com.pabsdl.domain.model.BeerItem
 

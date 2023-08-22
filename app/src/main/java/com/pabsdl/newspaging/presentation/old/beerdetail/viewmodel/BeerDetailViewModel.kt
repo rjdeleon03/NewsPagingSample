@@ -1,4 +1,4 @@
-package com.pabsdl.newspaging.presentation.beerdetail.viewmodel
+package com.pabsdl.newspaging.presentation.old.beerdetail.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

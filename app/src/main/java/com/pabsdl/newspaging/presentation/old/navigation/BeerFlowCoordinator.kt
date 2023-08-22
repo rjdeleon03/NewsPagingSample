@@ -1,4 +1,4 @@
-package com.pabsdl.newspaging.presentation.navigation
+package com.pabsdl.newspaging.presentation.old.navigation
 
 class BeerFlowCoordinator(private val navigator: Navigator) {
 

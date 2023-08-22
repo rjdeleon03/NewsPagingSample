@@ -1,7 +1,7 @@
 package com.pabsdl.newspaging.di
 
-import com.pabsdl.newspaging.presentation.navigation.BeerFlowCoordinator
-import com.pabsdl.newspaging.presentation.navigation.Navigator
+import com.pabsdl.newspaging.presentation.old.navigation.BeerFlowCoordinator
+import com.pabsdl.newspaging.presentation.old.navigation.Navigator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

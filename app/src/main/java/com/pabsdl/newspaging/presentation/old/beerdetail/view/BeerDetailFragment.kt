@@ -1,6 +1,5 @@
-package com.pabsdl.newspaging.presentation.beerdetail.view
+package com.pabsdl.newspaging.presentation.old.beerdetail.view
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,17 +13,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.pabsdl.newspaging.R
 import com.pabsdl.newspaging.databinding.FragmentBeerDetailBinding
-import com.pabsdl.newspaging.presentation.beerdetail.viewmodel.BeerDetailViewModel
+import com.pabsdl.newspaging.presentation.old.beerdetail.viewmodel.BeerDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class BeerDetailFragment : Fragment() {

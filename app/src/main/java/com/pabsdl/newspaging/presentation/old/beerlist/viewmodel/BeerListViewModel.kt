@@ -1,11 +1,11 @@
-package com.pabsdl.newspaging.presentation.beerlist.viewmodel
+package com.pabsdl.newspaging.presentation.old.beerlist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.pabsdl.domain.usecases.GetBeersUseCase
-import com.pabsdl.newspaging.presentation.beerlist.view.BeerListViewItem
-import com.pabsdl.newspaging.presentation.navigation.BeerFlowCoordinator
+import com.pabsdl.newspaging.presentation.old.beerlist.view.BeerListViewItem
+import com.pabsdl.newspaging.presentation.old.navigation.BeerFlowCoordinator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

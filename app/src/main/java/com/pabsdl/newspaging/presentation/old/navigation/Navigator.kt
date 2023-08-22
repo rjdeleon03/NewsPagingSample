@@ -1,10 +1,10 @@
-package com.pabsdl.newspaging.presentation.navigation
+package com.pabsdl.newspaging.presentation.old.navigation
 
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import com.pabsdl.newspaging.R
-import com.pabsdl.newspaging.presentation.beerdetail.view.BeerDetailFragment
-import com.pabsdl.newspaging.presentation.beerlist.view.BeerListFragment
+import com.pabsdl.newspaging.presentation.old.beerdetail.view.BeerDetailFragment
+import com.pabsdl.newspaging.presentation.old.beerlist.view.BeerListFragment
 
 class Navigator {
 
