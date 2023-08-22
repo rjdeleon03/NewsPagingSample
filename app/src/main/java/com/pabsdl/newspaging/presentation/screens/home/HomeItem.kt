@@ -1,6 +1,8 @@
 package com.pabsdl.newspaging.presentation.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -13,6 +15,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,23 +26,32 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.pabsdl.domain.model.BeerItem
 import com.pabsdl.newspaging.R
+import com.pabsdl.newspaging.presentation.util.Screen
 
 @Composable
 fun HomeItem(
     beer: BeerItem,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController,
 ) {
 
     val context = LocalContext.current
     Card(
         modifier = modifier
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable {
+                navigateToDetail(
+                    navController = navController,
+                    beer = beer
+                )
+            },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
-        )
+        ),
     ) {
         Row(
             modifier = Modifier
@@ -89,4 +101,8 @@ fun HomeItem(
             }
         }
     }
+}
+
+private fun navigateToDetail(navController: NavController, beer: BeerItem) {
+    navController.navigate("${Screen.BeerDetailScreen.route}/${beer.id}")
 }

@@ -58,7 +58,10 @@ fun HomeScreen(
                     key = beers.itemKey { it.id }
                 ) { index ->
                     beers[index]?.let { item ->
-                        HomeItem(beer = item)
+                        HomeItem(
+                            beer = item,
+                            navController = navController
+                        )
                     }
                 }
                 // Loading state at the end

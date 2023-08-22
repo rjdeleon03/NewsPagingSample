@@ -11,10 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.pabsdl.newspaging.presentation.screens.detail.DetailScreen
 import com.pabsdl.newspaging.presentation.screens.home.HomeScreen
 import com.pabsdl.newspaging.presentation.screens.home.HomeViewModel
 import com.pabsdl.newspaging.presentation.ui.theme.NewsPagingTheme
@@ -41,6 +44,25 @@ class MainComposeActivity : ComponentActivity() {
                             route = Screen.HomeScreen.route
                         ) {
                             HomeScreen(
+                                navController = navController,
+                                viewModel = hiltViewModel()
+                            )
+                        }
+                        composable(
+                            route = Screen.BeerDetailScreen.route +
+                                "/{beerId}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "beerId"
+                                ) {
+                                    type = NavType.IntType
+                                    defaultValue = 0
+                                }
+                            )
+                        ) {
+                            val beerId = it.arguments?.getInt("beerId") ?: 0
+                            DetailScreen(
+                                beerId = beerId,
                                 navController = navController,
                                 viewModel = hiltViewModel()
                             )
