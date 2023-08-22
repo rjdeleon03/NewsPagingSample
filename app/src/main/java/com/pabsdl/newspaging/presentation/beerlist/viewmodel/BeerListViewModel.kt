@@ -10,9 +10,6 @@ import com.pabsdl.newspaging.presentation.beerlist.repository.BeerListRepository
 
 class BeerListViewModel(private val repository: BeerListRepository): ViewModel() {
 
-    val beerListData = Pager(PagingConfig(pageSize = BeerService.NETWORK_PAGE_SIZE)) {
-        repository.pagingSource
-    }
-    .flow
-    .cachedIn(viewModelScope)
+    val beerListData = repository.getBeers()
+        .cachedIn(viewModelScope)
 }
