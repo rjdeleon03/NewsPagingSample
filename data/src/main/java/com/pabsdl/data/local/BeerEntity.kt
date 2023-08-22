@@ -14,3 +14,4 @@ data class BeerEntity(
     val imageUrl: String?
 ) {
 }
+

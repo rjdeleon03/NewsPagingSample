@@ -25,12 +25,16 @@ class BeerRemoteMediator(
     ): MediatorResult {
         return try {
             val loadKey = when(loadType) {
+                // KEY -- Page number
+                // Key when user refreshes is set to 1
                 LoadType.REFRESH -> 1
+                // Prepend key is always end of page
                 LoadType.PREPEND -> {
                     return MediatorResult.Success(
                         endOfPaginationReached = true
                     )
                 }
+                // Append key is always the last page + 1
                 LoadType.APPEND -> {
                     val lastItem = state.lastItemOrNull()
                     if (lastItem == null) {
@@ -40,9 +44,11 @@ class BeerRemoteMediator(
                     }
                 }
             }
+            // Setup API
             val beers = beerApi.getBeers(
                 page = loadKey
             )
+            // Insert in DB when API results are obtained
             beerDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     beerDatabase.dao.clearAll()
@@ -50,6 +56,7 @@ class BeerRemoteMediator(
                 val beerEntities = beers.body()?.map { it.toLocal() } ?: emptyList()
                 beerDatabase.dao.insertAll(beerEntities)
             }
+            // Return success
             MediatorResult.Success(
                 endOfPaginationReached = beers.body()?.isEmpty() == true
             )
