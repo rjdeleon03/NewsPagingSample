@@ -12,16 +12,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.paging.LoadState
-import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.pabsdl.domain.model.BeerItem
 
 @Composable
 fun HomeScreen(
-    beers: LazyPagingItems<BeerItem>
+    navController: NavController,
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
+
     val context = LocalContext.current
+    val beers = viewModel.beerListData.collectAsLazyPagingItems()
 
     // Error display
     // Launched effect will listen to the load state of paging items
