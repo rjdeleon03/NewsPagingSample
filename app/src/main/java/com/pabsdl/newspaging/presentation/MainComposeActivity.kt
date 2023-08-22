@@ -10,8 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.pabsdl.newspaging.presentation.screens.home.HomeScreen
+import com.pabsdl.newspaging.presentation.screens.home.HomeViewModel
 import com.pabsdl.newspaging.presentation.ui.theme.NewsPagingTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,25 +28,11 @@ class MainComposeActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val viewModel = hiltViewModel<HomeViewModel>()
+                    val beers = viewModel.beerListData.collectAsLazyPagingItems()
+                    HomeScreen(beers = beers)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NewsPagingTheme {
-        Greeting("Android")
     }
 }
